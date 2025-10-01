@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
+    
+    .header p {
+      margin: 5px 0 0 0;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .section h3 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .form-group {
+      margin-bottom: 12px;
+    }
+    
+    label {
+      display: block;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      background: #2196F3;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      width: 100%;
+    }
+    
+    button:hover {
+      background: #1976D2;
+    }
+    
+    .status {
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    .status.success {
+      background: #e8f5e8;
+      color: #2e7d32;
+      border: 1px solid #c8e6c9;
+    }
+    
+    .status.error {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #ffcdd2;
+    }
+    
+    .instructions {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.4;
+    }
+    
+    .instructions a {
+      color: #2196F3;
+      text-decoration: none;
+    }
+    
+    .instructions a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>💡 Text Highlighter</h1>
+    <p>Highlight text and save to Notion</p>
+  </div>
+
+  <div class="section">
+    <h3>🔧 Notion Configuration</h3>
+    
+    <div class="form-group">
+      <label for="notionToken">Notion Integration Token:</label>
+      <input type="password" id="notionToken" placeholder="secret_...">
+    </div>
+    
+    <div class="form-group">
+      <label for="notionDatabaseId">Database ID:</label>
+      <input type="text" id="notionDatabaseId" placeholder="32-character database ID">
+    </div>
+    
+    <button id="saveConfig">Save Configuration</button>
+    
+    <div id="configStatus"></div>
+  </div>
+
+  <div class="section">
+    <h3>📖 How to Use</h3>
+    <div class="instructions">
+      1. Set up your Notion integration above<br>
+      2. Select any text on a webpage<br>
+      3. Click "Highlight & Save" button<br>
+      4. Text will be highlighted and saved to Notion
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>🔗 Setup Instructions</h3>
+    <div class="instructions">
+      <strong>Create Notion Integration:</strong><br>
+      1. Go to <a href="https://www.notion.so/my-integrations" target="_blank">notion.so/my-integrations</a><br>
+      2. Click "New integration"<br>
+      3. Copy the "Internal Integration Token"<br><br>
+      
+      <strong>Create Database:</strong><br>
+      1. Create a new Notion page with a database<br>
+      2. Add columns: Title (title), Content (text), URL (url), Date (date)<br>
+      3. Share the page with your integration<br>
+      4. Copy the database ID from the URL
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

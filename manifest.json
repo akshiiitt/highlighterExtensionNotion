@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Text Highlighter & Notion Saver",
+  "version": "1.0.0",
+  "description": "Highlight selected text and save directly to Notion for easy reference and revision",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "https://api.notion.com/*"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Text Highlighter & Notion Saver"
+  }
+}
