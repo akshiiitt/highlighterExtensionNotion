@@ -1,11 +1,11 @@
-# Text Highlighter & Notion Saver
+# Text Highlighter & Notion Saver (Minimal)
 
-A minimal Chrome extension that allows you to highlight selected text on any webpage and automatically save it to Notion for easy reference and revision.
+A minimal Chrome extension to highlight selected text on a page and save it to a Notion page via a right‑click context menu.
 
 ## Features
 
-- 🖍️ **Simple Text Highlighting**: Select any text and click to highlight it
-- 📝 **Notion Integration**: Automatically saves highlighted text to your Notion database
+- 🖍️ **Highlight**: Select text and use the right‑click menu → "Highlight & Save to Notion"
+- 📝 **Notion Integration**: Appends the selected text to a single Notion page
 - 🚀 **Minimal & Fast**: No unnecessary features, just what you need
 - 📖 **Perfect for Research**: Great for saving important points while reading articles
 
@@ -26,43 +26,34 @@ A minimal Chrome extension that allows you to highlight selected text on any web
 3. Give it a name (e.g., "Text Highlighter")
 4. Copy the "Internal Integration Token" (starts with `secret_`)
 
-### 3. Set Up Notion Database
+### 3. Set Up a Notion Page (not a database)
 
-1. Create a new Notion page
-2. Add a database with these columns:
-   - **Title** (Title type)
-   - **Content** (Text type)
-   - **URL** (URL type)
-   - **Date** (Date type)
-3. Share the page with your integration:
-   - Click "Share" → "Invite" → Select your integration
-4. Copy the database ID from the URL (32-character string)
+1. Create (or pick) a Notion page where highlights should be stored
+2. Share the page with your integration (Share → Invite → your integration)
+3. Copy the page ID:
+   - From the page URL, copy the 32‑character ID segment (hyphens allowed)
 
 ### 4. Configure the Extension
 
-1. Click the extension icon in your toolbar
-2. Enter your Notion Integration Token
-3. Enter your Database ID
-4. Click "Save Configuration"
-5. You should see a success message if everything is set up correctly
+1. Go to chrome://extensions → find this extension → Details → Extension options
+2. Paste your Notion integration token (`secret_...`)
+3. Paste your Notion page ID (with or without hyphens)
+4. Click Save
 
 ## How to Use
 
-1. **Select Text**: Highlight any text on a webpage
-2. **Click Button**: A "💡 Highlight & Save" button will appear
-3. **Save**: Click the button to highlight the text and save it to Notion
-4. **Done**: The text is now highlighted on the page and saved to your Notion database
+1. Select any text on a webpage
+2. Right‑click → "Highlight & Save to Notion"
+3. The selection is highlighted in place and appended as a paragraph to your Notion page
 
 ## File Structure
 
 ```
 ├── manifest.json       # Extension configuration
-├── content.js          # Main highlighting functionality
-├── background.js       # Notion API integration
-├── popup.html          # Extension popup interface
-├── popup.js            # Popup functionality
-├── styles.css          # Highlighting styles
-├── icons/              # Extension icons
+├── background.js       # Context menu + Notion page append
+├── content.js          # Minimal highlighting of selection
+├── options.html        # Minimal options to store token + page ID
+├── options.js          # Options logic
 └── README.md           # This file
 ```
 
@@ -77,17 +68,17 @@ This extension follows professional development practices:
 
 ## Troubleshooting
 
-### "Configuration not found" error
-- Make sure you've entered both the Notion token and database ID in the extension popup
+### "Missing Notion token or page ID" error
+- Open Options and ensure both fields are saved
 
-### "Notion API Error" 
-- Check that your integration has access to the database
-- Verify the database ID is correct (32 characters)
+### "Notion API Error"
+- Ensure the Notion page is shared with your integration
+- Verify the page ID is correct (32 characters, hyphens allowed)
 - Ensure your token starts with `secret_`
 
 ### Highlighting not working
-- Try refreshing the page after installing the extension
-- Check that the extension is enabled in Chrome settings
+- Make a fresh selection and try again
+- Reload the page after installing the extension
 
 ## Privacy & Security
 

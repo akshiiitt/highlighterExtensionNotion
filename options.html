@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Options</title>
+  </head>
+  <body>
+    <h3>Notion Settings</h3>
+    <label>
+      Notion Integration Token
+      <input id="token" type="password" placeholder="secret_..." />
+    </label>
+    <br />
+    <label>
+      Notion Page ID (32-char, without dashes)
+      <input id="pageId" type="text" placeholder="e.g. 0123456789abcdef0123456789abcdef" />
+    </label>
+    <br />
+    <button id="save">Save</button>
+    <span id="status"></span>
+
+    <script src="options.js"></script>
+  </body>
+</html>

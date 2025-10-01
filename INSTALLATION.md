@@ -1,4 +1,4 @@
-# Quick Installation Guide
+# Quick Installation Guide (Minimal)
 
 ## Step 1: Load Extension in Chrome
 
@@ -16,36 +16,29 @@
 3. Name it "Text Highlighter" 
 4. Copy the token (starts with `secret_`)
 
-### Create Notion Database:
-1. Create a new Notion page
-2. Type `/database` and select "Table - Inline"
-3. Add these columns:
-   - **Title** (already exists - Title type)
-   - **Content** (Text type)
-   - **URL** (URL type) 
-   - **Date** (Date type)
-4. Click "Share" → "Invite" → Select your integration
-5. Copy database ID from URL (32-character string after the last `/`)
+### Prepare a Notion Page (not a database):
+1. Create or open a Notion page where highlights should be stored
+2. Click "Share" → "Invite" → Select your integration to grant access
+3. Copy the page ID (32 characters). Hyphens are okay; the extension accepts both.
 
 ### Configure Extension:
-1. Click the extension icon in Chrome toolbar
-2. Paste your Notion token
-3. Paste your database ID
-4. Click "Save Configuration"
-5. You should see "✅ Notion connection successful!"
+1. Go to chrome://extensions → Details for this extension → Extension options
+2. Paste your Notion token (`secret_...`)
+3. Paste your Notion page ID (with or without hyphens)
+4. Click Save
 
 ## Step 3: Test It Out
 
 1. Go to any webpage with text
 2. Select some text
-3. Click the "💡 Highlight & Save" button that appears
-4. Text should be highlighted and saved to Notion!
+3. Right-click → "Highlight & Save to Notion"
+4. The selection is highlighted and appended as a paragraph to your Notion page
 
 ## Troubleshooting
 
-- **No button appears**: Refresh the page after installing
-- **Notion error**: Check token and database ID are correct
-- **Permission error**: Make sure database is shared with integration
+- **Context menu not visible**: Ensure you selected text; reload the page after installing
+- **Notion error**: Check token and page ID in Options, and that the page is shared with the integration
+- **Permission error**: Share the page with your integration in Notion
 
 ## Professional Git Workflow Used
 
