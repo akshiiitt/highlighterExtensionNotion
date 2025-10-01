@@ -4,20 +4,46 @@
     <meta charset="utf-8" />
     <title>Options</title>
   </head>
-  <body>
-    <h3>Notion Settings</h3>
-    <label>
-      Notion Integration Token
-      <input id="token" type="password" placeholder="secret_..." />
-    </label>
-    <br />
-    <label>
-      Notion Page ID (32-char, without dashes)
-      <input id="pageId" type="text" placeholder="e.g. 0123456789abcdef0123456789abcdef" />
-    </label>
-    <br />
-    <button id="save">Save</button>
-    <span id="status"></span>
+  <body style="padding: 20px; font-family: Arial, sans-serif;">
+    <h2>Text Highlighter & Notion Saver - Setup</h2>
+    
+    <div style="background: #f0f8ff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <h3>Step 1: Create Notion Integration</h3>
+      <p>1. Go to <a href="https://www.notion.so/my-integrations" target="_blank">notion.so/my-integrations</a></p>
+      <p>2. Click "New integration" and give it a name</p>
+      <p>3. Copy the "Internal Integration Token" (starts with secret_)</p>
+    </div>
+
+    <div style="background: #f0fff0; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <h3>Step 2: Prepare Notion Page</h3>
+      <p>1. Create or open a Notion page where highlights will be saved</p>
+      <p>2. Click "Share" → "Invite" → Select your integration</p>
+      <p>3. Copy the page ID from the URL (32 characters, with or without dashes)</p>
+    </div>
+
+    <div style="background: #fff8f0; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <h3>Step 3: Configure Extension</h3>
+      
+      <label style="display: block; margin-bottom: 10px;">
+        <strong>Notion Integration Token:</strong><br>
+        <input id="token" type="password" placeholder="secret_..." style="width: 400px; padding: 5px;" />
+      </label>
+      
+      <label style="display: block; margin-bottom: 15px;">
+        <strong>Notion Page ID:</strong><br>
+        <input id="pageId" type="text" placeholder="e.g. 0123456789abcdef0123456789abcdef" style="width: 400px; padding: 5px;" />
+      </label>
+      
+      <button id="save" style="background: #007acc; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Save Settings</button>
+      <span id="status" style="margin-left: 10px; font-weight: bold;"></span>
+    </div>
+
+    <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+      <h3>How to Use</h3>
+      <p>1. Select any text on a webpage</p>
+      <p>2. Right-click → "Highlight & Save to Notion"</p>
+      <p>3. Text gets highlighted and saved to your Notion page!</p>
+    </div>
 
     <script src="options.js"></script>
   </body>

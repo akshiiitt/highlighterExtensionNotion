@@ -30,16 +30,31 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     await appendToNotionPage({
       text: selectedText
     });
+    // Show success notification
+    chrome.tabs.sendMessage(tab.id, { 
+      action: 'showNotification', 
+      message: '✅ Saved to Notion!',
+      type: 'success'
+    });
   } catch (e) {
-    // Silent fail is acceptable for minimal flow; available in console for debugging
     console.error('Notion save failed:', e);
+    // Show error notification
+    chrome.tabs.sendMessage(tab.id, { 
+      action: 'showNotification', 
+      message: '❌ Failed to save to Notion. Check settings.',
+      type: 'error'
+    });
   }
 });
 
 function sendHighlightMessage(tabId) {
   return new Promise((resolve) => {
     chrome.tabs.sendMessage(tabId, { action: 'highlightSelection' }, (resp) => {
-      resolve(resp && resp.ok);
+      if (chrome.runtime.lastError) {
+        resolve(false);
+      } else {
+        resolve(resp && resp.ok);
+      }
     });
   });
 }
@@ -58,8 +73,7 @@ async function appendToNotionPage({ text }) {
   // Normalize page ID: allow hyphenated or plain UUIDs
   const pageId = String(notionPageId).replace(/-/g, '');
 
-  // Notion allows appending block children to a page (page is a block)
-  // We append a simple paragraph with the selected text (minimal)
+  // Notion API: append blocks to a page using PATCH
   const body = {
     children: [
       {
